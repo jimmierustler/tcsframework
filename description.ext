@@ -1,0 +1,99 @@
+author = "AUTHOR NAME";
+OnLoadName = "MISSION NAME";
+OnLoadMission = "MISSION DESCRIPTION";
+loadScreen = "load.jpg";
+
+<<<<<<< HEAD
+=======
+enableDebugConsole[] = {"76561199020930438"};
+>>>>>>> 2e4db8cbaafcc8dd998f53fe1746434c552d4735
+
+// respawnTemplates[] = {"TCS_OneLife"}; // One life respawn
+ respawnTemplates[] = {"TCS_Respawn", "TCS_Tickets"}; // Ticket based respawn
+//respawnTemplates[] = {"TCS_Respawn", "TCS_Individual_Tickets"}; // Individual ticket based respawn
+// respawnTemplates[] = {"TCS_Respawn", "Counter"}; // Default respawn
+
+// Do not change this unless you know what you are doing, if you do you will need to fix all the respawn templates
+// https://community.bistudio.com/wiki/Description.ext#respawnOnStart
+respawnOnStart = -1;
+
+
+#include "tcs\DefaultGCSettings.hpp"
+
+class Params{
+  class TCS_param_safeStart_Time {
+    title = "Safe start time";
+    values[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15};
+    texts[] = {"Off", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15"};
+    default = 15;
+  };
+
+  class TCS_param_preInitFreeze_Time {
+    title = "Pre-init freeze time";
+    values[] = {0, 5, 10, 15, 20, 25, 30};
+    texts[] = {"Off", "5", "10", "15", "20", "25", "30"};
+    default = 20;
+  };
+};
+
+#include "CfgDebriefing.hpp"
+
+
+#include "CfgNotifications.hpp"
+
+#include "CfgRespawnTemplates.hpp"
+
+#include "RscTitles.hpp"
+
+#define description
+  #include "tcs\headless_ai\loadAI.sqf"
+
+#undef description
+
+
+
+class Extended_PreInit_EventHandlers {
+	#define description_XEH_PreInit
+	#include "tcs\headless_ai\loadAI.sqf" //DO NOT REMOVE
+	#undef description_XEH_PreInit
+};
+
+#define description_XEH_PostInit
+
+class Extended_PostInit_EventHandlers  {
+	#define description_XEH_PostInit
+	#include "tcs\headless_ai\loadAI.sqf" //DO NOT REMOVE
+	#undef description_XEH_PostInit
+};
+
+class Extended_InitPost_EventHandlers {
+	class CAManBase {
+		#define description_XEH_InitPost_CAManBase
+			#include "tcs\headless_ai\loadAI.sqf" //DO NOT REMOVE
+		#undef description_XEH_InitPost_CAManBase
+	};
+};
+
+
+
+
+
+
+#undef description_XEH_PostInit
+
+#define description_other
+  #include "tcs\headless_ai\loadAI.sqf"
+#undef description_other
+
+#define description_XEH_FiredMan_CAManBase
+	#include "tcs\headless_ai\loadAI.sqf" //DO NOT REMOVE
+#undef description_XEH_FiredMan_CAManBase
+
+#include "CfgFunctions.hpp"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e4db8cbaafcc8dd998f53fe1746434c552d4735
+#define description_sounds
+
+#undef description_sounds

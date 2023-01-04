@@ -1,0 +1,1 @@
+[] call TCS_fnc_initPlayer;
